@@ -1,5 +1,6 @@
 use askama::Template;
 use axum::{Router, routing::get, response::IntoResponse};
+use tower_http::services::ServeDir;
 
 
 #[derive(Template)]
@@ -20,7 +21,6 @@ async fn root() -> impl IntoResponse {
     }
 }
 
-
 async fn partial() -> impl IntoResponse {
     PartialTemplate {}
 }
@@ -28,6 +28,7 @@ async fn partial() -> impl IntoResponse {
 #[tokio::main]
 async fn main() {
     let app = Router::new()
+            .nest_service("/public", ServeDir::new("public"))
             .route("/", get(root))
             .route("/partial", get(partial));
 
