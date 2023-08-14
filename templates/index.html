@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" charset="utf-8" content="text/html" />
+        <title>Hello, world!</title>
+        <script src="https://unpkg.com/htmx.org@1.9.4" integrity="sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h1>Hello, {{ name }}!</h1>
+        <button hx-get="/partial" hx-swap="innerHtml" hx-target="#swap">Click me</button>
+        <div id="swap"></div>
+    </body>
+</html>
